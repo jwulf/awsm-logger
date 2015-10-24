@@ -1,0 +1,23 @@
+{
+  "name": "awsm-logger",
+  "version": "1.0.28",
+  "description": "Logging library for JAWS Lambdas",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joshua Wulf",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp-babel": "^5.3.0"
+  },
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "bunyan": "^1.5.1",
+    "bunyan-loggly": "0.0.5",
+    "debug": "^2.2.0",
+    "winston": "jwulf/winston#11abdc",
+    "winston-loggly": "^1.1.0",
+    "winston-papertrail": "jwulf/winston-papertrail#cc90af7"
+  }
+}
