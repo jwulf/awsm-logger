@@ -1,7 +1,7 @@
 var Logger = require('./jaws-logger.js');
 
 function logger(id, credentials) {
-        var logTransport = process.env.JAWS_LOG_TRANSPORT || 'papertrail',
+        var logTransport = process.env.JAWS_LOG_TRANSPORT || 'console',
             stage = process.env.JAWS_STAGE || '';
             
         stage = stage && ' ['+stage+'] ';
