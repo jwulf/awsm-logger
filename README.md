@@ -1,6 +1,6 @@
 # Logging Library for JAWS Applications
 
-`awsm-logger` provides application debug-level logging for lambda-based applications. 
+`awsm-logger` provides application developer-level logging for lambda-based applications. 
 
 ##Use Case
 
@@ -62,14 +62,20 @@ var log = require('awsm-logger')('MyLambdaFunction_1');
 var log = require('awsm-logger')('MyLambdaFunction_1', logConfigLoggly);
 ```
 
-4. Use the log in your function:
+4. Specify a namespace for the log messages. This is used to trace, for example, a specific customer order through multiple lambdas. Use can use this value to trace the flow of a single event through multiple lambda functions.
+
+```
+log.namespace(event.orderNumber);
+```
+
+5. Use the log in your function:
 
 ```
 log.info('Here's an informative message');
 log.error('Oh-oh, something went wrong!');
 ```
 
-5. Execution of a Lambda function on AWS exits when one of the `context` methods `fail`, `succeed`, or `done` is called.
+6. Execution of a Lambda function on AWS exits when one of the `context` methods `fail`, `succeed`, or `done` is called.
 
 ```
 var log = require('awsm-logger')('MyLambdaFunction_1');
@@ -89,7 +95,7 @@ function main_function(event, context) {
 }
 ```
 
-To allow your logging messages to complete before the function exits, `awsm-logger` can wrap a Promise. Here's an example:
+7. To allow your logging messages to complete before the function exits, `awsm-logger` can wrap a Promise. Here's an example:
 
 ```
 var log = require('awsm-logger')('MyLambdaFunction_1'),
