@@ -75,7 +75,13 @@ log.info('Here's an informative message');
 log.error('Oh-oh, something went wrong!');
 ```
 
-6. Execution of a Lambda function on AWS exits when one of the `context` methods `fail`, `succeed`, or `done` is called.
+6. Use a Promise and the `bindResolve` and `bindReject` methods to ensure asynchronous logging completes before the function exits.
+
+Execution of a Lambda function on AWS exits when one of the `context` methods `fail`, `succeed`, or `done` is called.
+
+The impact is that your log messages will not be reliably delivered - as the function may exit while they are being sent. 
+
+This function will not reliably log messages:
 
 ```
 var log = require('awsm-logger')('MyLambdaFunction_1');
@@ -95,7 +101,7 @@ function main_function(event, context) {
 }
 ```
 
-7. To allow your logging messages to complete before the function exits, `awsm-logger` can wrap a Promise. Here's an example:
+To allow your logging messages to complete before the function exits, `awsm-logger` can wrap a Promise. Here's an example:
 
 ```
 var log = require('awsm-logger')('MyLambdaFunction_1'),
