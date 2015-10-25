@@ -81,6 +81,7 @@ class JawsLogger {
         this.count++;
 		if (this.loggerTransport !== "console") {
 			console.log(strmsg);
+			this.count--;
 		}
 		if (this.loggerTransport == 'loggly') this.logger.info(msg);
 		if (this.loggerTransport == 'papertrail') this.logger.info(strmsg);
@@ -99,6 +100,7 @@ class JawsLogger {
         this.count++;
 		if (this.loggerTransport !== "console") {
 			console.log(strmsg);
+			this.count--;
 		}
 		if (this.loggerTransport == 'loggly') this.logger.error(msg);
 		if (this.loggerTransport == 'papertrail') this.logger.error(strmsg);
