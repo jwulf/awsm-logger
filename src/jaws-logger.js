@@ -12,22 +12,22 @@
             port: 134324
         }
  */
-var debug = require('debug')('Logging'),
-	JawsLoggerPapertrail = require('./jaws-logger-papertrail.js'),
-	JawsLoggerLoggly = require('./jaws-logger-loggly.js');
+var debug 					= require('debug')('Logging'),
+	JawsLoggerPapertrail 	= require('./jaws-logger-papertrail.js'),
+	JawsLoggerLoggly 		= require('./jaws-logger-loggly.js');
 
 class JawsLogger {
 	constructor(id, loggerTransport, credentials) {
-		this.count = 0;
-		this.id_ = id + ' ' || 'Logger ';
-		this.ns = '';
+		this.count 	= 0;
+		this.id_ 	= id + ' ' || 'Logger ';
+		this.ns 	= '';
 		loggerTransport = loggerTransport || "console";
 		this.loggerTransport = loggerTransport;
 		switch(loggerTransport) {
-			case "papertrail":
+			case "Papertrail":
 				this.logger = JawsLoggerPapertrail(credentials);
 				break;
-			case "loggly":
+			case "Loggly":
 				this.logger = JawsLoggerLoggly(credentials);
 				break;
 			default:
@@ -83,8 +83,8 @@ class JawsLogger {
 			console.log(strmsg);
 			this.count--;
 		}
-		if (this.loggerTransport == 'loggly') this.logger.info(msg);
-		if (this.loggerTransport == 'papertrail') this.logger.info(strmsg);
+		if (this.loggerTransport == 'Loggly') this.logger.info(msg);
+		if (this.loggerTransport == 'Papertrail') this.logger.info(strmsg);
     }
 	
 	error(msg) {
@@ -102,8 +102,8 @@ class JawsLogger {
 			console.log(strmsg);
 			this.count--;
 		}
-		if (this.loggerTransport == 'loggly') this.logger.error(msg);
-		if (this.loggerTransport == 'papertrail') this.logger.error(strmsg);
+		if (this.loggerTransport == 'Loggly') this.logger.error(msg);
+		if (this.loggerTransport == 'Papertrail') this.logger.error(strmsg);
     }
 }
 
